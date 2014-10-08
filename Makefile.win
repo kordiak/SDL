@@ -1,0 +1,41 @@
+# Project: Projekt1
+# Makefile created by Dev-C++ 5.3.0.4
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = ma.o Game.o TextureManager.o GameObject.o Player.o $(RES)
+LINKOBJ  = ma.o Game.o TextureManager.o GameObject.o Player.o $(RES)
+LIBS     = -L"C:/Program Files/Dev-Cpp/MinGW32/lib" -L"C:/Users/acer/Documents/programowanie/External/SDL2-2.0.3/i686-w64-mingw32/lib" -L"C:/Users/acer/Documents/programowanie/External/SDL2_image-2.0.0/i686-w64-mingw32/lib" -mwindows -static-libgcc -static-libstdc++  -lmingw32 -lSDL2main -lSDL2 -lSDL2_image  -g3
+INCS     = -I"C:/Users/acer/Documents/programowanie/External/SDL2-2.0.3/include" -I"C:/Users/acer/Documents/programowanie/External/SDL2_image-2.0.0/i686-w64-mingw32/include/SDL2"
+CXXINCS  = -I"C:/Program Files/Dev-Cpp/MinGW32/include" -I"C:/Users/acer/Documents/programowanie/External/SDL2-2.0.3/include" -I"C:/Users/acer/Documents/programowanie/External/SDL2_image-2.0.0/i686-w64-mingw32/include/SDL2"
+BIN      = Projekt1.exe
+CXXFLAGS = $(CXXINCS)  -pedantic -g3
+CFLAGS   = $(INCS)  -pedantic -g3
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+ma.o: ma.cpp
+	$(CPP) -c ma.cpp -o ma.o $(CXXFLAGS)
+
+Game.o: Game.cpp
+	$(CPP) -c Game.cpp -o Game.o $(CXXFLAGS)
+
+TextureManager.o: TextureManager.cpp
+	$(CPP) -c TextureManager.cpp -o TextureManager.o $(CXXFLAGS)
+
+GameObject.o: GameObject.cpp
+	$(CPP) -c GameObject.cpp -o GameObject.o $(CXXFLAGS)
+
+Player.o: Player.cpp
+	$(CPP) -c Player.cpp -o Player.o $(CXXFLAGS)
